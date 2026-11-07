@@ -1,0 +1,602 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e878a5">
+<title>Precious's Campus Diary 🌸</title>
+
+<style>
+:root {
+  --pink: #dc6e9d;
+  --dark-pink: #a83e70;
+  --light-pink: #fff0f6;
+  --background: #fff8fb;
+  --text: #49313e;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg,#d65e92,#f1a6c5);
+  color: white;
+  padding: 25px 16px;
+  text-align: center;
+}
+
+header h1 { font-size: 25px; }
+
+header p { font-size: 13px; }
+
+nav {
+  background: white;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 17px;
+  padding: 15px 8px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px #0000000a;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--dark-pink);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.container {
+  width: 100%;
+  max-width: 950px;
+  margin: auto;
+  padding: 18px;
+}
+
+.welcome {
+  background: linear-gradient(135deg,#f8c3d9,#fff0f6);
+  border-radius: 22px;
+  padding: 28px 22px;
+  margin: 12px 0 25px;
+}
+
+.welcome h2 {
+  font-size: 28px;
+  color: var(--dark-pink);
+  margin-bottom: 8px;
+}
+
+.welcome p { font-size: 14px; }
+
+.tag {
+  display: inline-block;
+  background: white;
+  color: var(--dark-pink);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  margin: 12px 5px 0 0;
+}
+
+.section-title {
+  color: var(--dark-pink);
+  font-size: 20px;
+  margin: 28px 0 14px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 13px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #f5d7e4;
+  padding: 18px;
+  border-radius: 17px;
+  box-shadow: 0 4px 15px #d77ca51a;
+}
+
+.card h3 {
+  color: var(--dark-pink);
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.card p {
+  font-size: 12px;
+  color: #856b78;
+}
+
+.emoji { font-size: 27px; }
+
+a.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #f4d5e3;
+  border-radius: 17px;
+  padding: 19px;
+  margin-bottom: 16px;
+}
+
+.panel h3 {
+  color: var(--dark-pink);
+  margin-bottom: 12px;
+}
+
+.progress {
+  height: 10px;
+  background: #f7e1eb;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--pink);
+  transition: .3s;
+}
+
+.check-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f8edf2;
+  font-size: 13px;
+}
+
+.check-item input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--pink);
+}
+
+button {
+  border: none;
+  background: var(--pink);
+  color: white;
+  border-radius: 9px;
+  padding: 11px 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover { background: var(--dark-pink); }
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #e9c3d3;
+  border-radius: 9px;
+  background: white;
+  color: var(--text);
+}
+
+.result {
+  color: var(--dark-pink);
+  font-weight: bold;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.study-item {
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--light-pink);
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+.quote {
+  background: linear-gradient(135deg,#f6c5da,#fff0f6);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  margin-top: 28px;
+}
+
+.quote h2 { color: var(--dark-pink); }
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #a36d85;
+  font-size: 12px;
+}
+
+@media(min-width:650px) {
+  .cards { grid-template-columns: repeat(4,1fr); }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌸 Precious's Campus Diary</h1>
+  <p>Your university journey, beautifully organised.</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#checklist">Checklist</a>
+  <a href="#hostel">Hostel</a>
+  <a href="#studies">Studies</a>
+  <a href="#budget">Budget</a>
+</nav>
+
+<main class="container">
+
+<section class="welcome" id="home">
+  <h2>Hello, Precious! 💗</h2>
+  <p>
+    Welcome to your new chapter at the Federal University
+    of Technology, Minna. This is your personal space
+    to prepare, learn, grow and make beautiful memories.
+  </p>
+  <span class="tag">🎓 FUTMINNA</span>
+  <span class="tag">💻 Data Science</span>
+  <span class="tag">🌷 Fresher</span>
+</section>
+
+<h2 class="section-title">Your personal dashboard ✨</h2>
+
+<section class="cards">
+
+<a class="card-link" href="#checklist">
+<div class="card">
+  <div class="emoji">🧳</div>
+  <h3>My Checklist</h3>
+  <p>Prepare your resumption items.</p>
+</div>
+</a>
+
+<a class="card-link" href="#hostel">
+<div class="card">
+  <div class="emoji">🛏️</div>
+  <h3>My Hostel</h3>
+  <p>Get ready for hostel life.</p>
+</div>
+</a>
+
+<a class="card-link" href="#studies">
+<div class="card">
+  <div class="emoji">💻</div>
+  <h3>My Studies</h3>
+  <p>Explore Data Science.</p>
+</div>
+</a>
+
+<a class="card-link" href="#budget">
+<div class="card">
+  <div class="emoji">💰</div>
+  <h3>My Budget</h3>
+  <p>Plan your expenses.</p>
+</div>
+</a>
+
+</section>
+
+<!-- PACKING CHECKLIST -->
+
+<section id="checklist">
+<h2 class="section-title">🧳 My Packing Checklist</h2>
+
+<div class="panel">
+  <p id="progressText">0 items completed</p>
+  <div class="progress">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <div id="items">
+
+  <h3>Bedroom essentials</h3>
+  <label class="check-item"><input type="checkbox"> Bedsheets (2 sets)</label>
+  <label class="check-item"><input type="checkbox"> Pillow and pillowcases</label>
+  <label class="check-item"><input type="checkbox"> Blanket</label>
+  <label class="check-item"><input type="checkbox"> Hangers</label>
+  <label class="check-item"><input type="checkbox"> Padlock and spare keys</label>
+
+  <h3 style="margin-top:20px">Bathroom essentials</h3>
+  <label class="check-item"><input type="checkbox"> Bathing bucket and bowl</label>
+  <label class="check-item"><input type="checkbox"> Towels</label>
+  <label class="check-item"><input type="checkbox"> Toothbrush and toothpaste</label>
+  <label class="check-item"><input type="checkbox"> Bathing soap and sponge</label>
+  <label class="check-item"><input type="checkbox"> Body cream and deodorant</label>
+  <label class="check-item"><input type="checkbox"> Sanitary pads</label>
+  <label class="check-item"><input type="checkbox"> Tissue paper</label>
+
+  <h3 style="margin-top:20px">Clothing</h3>
+  <label class="check-item"><input type="checkbox"> Casual clothes</label>
+  <label class="check-item"><input type="checkbox"> Church and formal outfits</label>
+  <label class="check-item"><input type="checkbox"> Underwear</label>
+  <label class="check-item"><input type="checkbox"> Nightwear</label>
+  <label class="check-item"><input type="checkbox"> Slippers and sneakers</label>
+
+  <h3 style="margin-top:20px">Academic materials</h3>
+  <label class="check-item"><input type="checkbox"> Notebooks and pens</label>
+  <label class="check-item"><input type="checkbox"> School bag</label>
+  <label class="check-item"><input type="checkbox"> Admission documents</label>
+  <label class="check-item"><input type="checkbox"> Passport photographs</label>
+  <label class="check-item"><input type="checkbox"> Files and folders</label>
+
+  <h3 style="margin-top:20px">Electronics and extras</h3>
+  <label class="check-item"><input type="checkbox"> Phone and charger</label>
+  <label class="check-item"><input type="checkbox"> Power bank</label>
+  <label class="check-item"><input type="checkbox"> Water bottle</label>
+  <label class="check-item"><input type="checkbox"> Plate, cup and spoon</label>
+  <label class="check-item"><input type="checkbox"> Food provisions</label>
+  </div>
+
+  <p class="result" id="completionMessage"></p>
+</div>
+</section>
+
+<!-- HOSTEL -->
+
+<section id="hostel">
+<h2 class="section-title">🛏️ My Hostel Guide</h2>
+
+<div class="panel">
+  <h3>Make your hostel feel like home 💗</h3>
+  <p>Here are a few things to remember:</p>
+  <div class="study-item">🔐 Keep your valuables secure.</div>
+  <div class="study-item">🧹 Keep your room clean and organised.</div>
+  <div class="study-item">🤝 Respect your roommates.</div>
+  <div class="study-item">📋 Follow your hostel regulations.</div>
+  <div class="study-item">💡 Check which electrical appliances are permitted.</div>
+  <div class="study-item">📞 Keep important university contacts available.</div>
+</div>
+</section>
+
+<!-- DATA SCIENCE -->
+
+<section id="studies">
+<h2 class="section-title">💻 My Data Science Corner</h2>
+
+<div class="panel">
+  <h3>Welcome to your learning journey, Precious!</h3>
+  <p>Start familiarising yourself with these subjects:</p>
+
+  <div class="study-item">
+    <strong>📊 Mathematics and Statistics</strong>
+    <p>Build your foundation in numbers and data.</p>
+  </div>
+
+  <div class="study-item">
+    <strong>🐍 Python Programming</strong>
+    <p>Learn the basics of programming and coding.</p>
+  </div>
+
+  <div class="study-item">
+    <strong>📈 Data Analysis</strong>
+    <p>Understand how to organise and interpret information.</p>
+  </div>
+
+  <div class="study-item">
+    <strong>💡 Problem Solving</strong>
+    <p>Practise logical thinking and analytical skills.</p>
+  </div>
+
+  <div class="study-item">
+    <strong>📚 Study Habits</strong>
+    <p>Build a consistent reading and revision routine.</p>
+  </div>
+
+  <p style="font-size:12px;margin-top:12px">
+    These are suggested preparation topics, not an official
+    FUTMINNA course outline. Follow your department's
+    approved curriculum when available.
+  </p>
+</div>
+</section>
+
+<!-- BUDGET -->
+
+<section id="budget">
+<h2 class="section-title">💰 My Student Budget</h2>
+
+<div class="panel">
+  <h3>Plan your money wisely</h3>
+
+  <label>Available budget (₦)</label>
+  <input type="number" id="budgetInput" placeholder="Enter your budget">
+
+  <label>Accommodation and hostel (₦)</label>
+  <input type="number" id="hostelCost" placeholder="Enter amount">
+
+  <label>Food and provisions (₦)</label>
+  <input type="number" id="foodCost" placeholder="Enter amount">
+
+  <label>Transportation (₦)</label>
+  <input type="number" id="transportCost" placeholder="Enter amount">
+
+  <label>Books and stationery (₦)</label>
+  <input type="number" id="booksCost" placeholder="Enter amount">
+
+  <label>Personal care and other expenses (₦)</label>
+  <input type="number" id="otherCost" placeholder="Enter amount">
+
+  <button onclick="calculateBudget()">Calculate my budget</button>
+
+  <div class="result" id="budgetResult"></div>
+</div>
+</section>
+
+<!-- STUDY TIMETABLE -->
+
+<section>
+<h2 class="section-title">📅 My Weekly Study Goals</h2>
+
+<div class="panel">
+  <div class="study-item">Monday – Mathematics and Statistics</div>
+  <div class="study-item">Tuesday – Python basics</div>
+  <div class="study-item">Wednesday – Reading and revision</div>
+  <div class="study-item">Thursday – Data analysis</div>
+  <div class="study-item">Friday – Practise coding</div>
+  <div class="study-item">Saturday – Review the week's lessons</div>
+  <div class="study-item">Sunday – Rest and prepare for the week</div>
+  <p style="font-size:12px;margin-top:10px">
+    Suggested study routine. Adjust it to your actual
+    lectures and personal commitments.
+  </p>
+</div>
+</section>
+
+<!-- MOTIVATION -->
+
+<section class="quote">
+  <h2>Dear Precious 🌸</h2>
+  <p>
+    You are capable of achieving beautiful things.
+    Take every day as an opportunity to learn,
+    grow and become the woman you dream of being.
+  </p>
+  <p style="margin-top:13px;color:#a83e70">
+    Your journey matters. Believe in yourself. 💗
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <p>🌸 Precious's Campus Diary</p>
+  <p>Made with love, especially for Precious.</p>
+  <p>FUTMINNA | Data Science</p>
+  <p>© 2026</p>
+</footer>
+
+<script>
+
+// PACKING CHECKLIST
+const boxes = document.querySelectorAll(
+  '#items input[type="checkbox"]'
+);
+
+boxes.forEach((box,index) => {
+
+  box.checked =
+    localStorage.getItem('precious-check-' + index) === 'true';
+
+  box.addEventListener('change', () => {
+    localStorage.setItem(
+      'precious-check-' + index,
+      box.checked
+    );
+    updateProgress();
+  });
+
+});
+
+function updateProgress() {
+
+  const completed = [...boxes].filter(
+    box => box.checked
+  ).length;
+
+  const total = boxes.length;
+
+  document.getElementById('progressText').textContent =
+    completed + ' of ' + total + ' items completed';
+
+  document.getElementById('progressFill').style.width =
+    (completed / total * 100) + '%';
+
+  document.getElementById('completionMessage').textContent =
+    completed === total
+      ? 'Amazing, Precious! Your checklist is complete! 🌸'
+      : 'Keep going, Precious! You are doing great. 💗';
+}
+
+updateProgress();
+
+// STUDENT BUDGET
+const budgetFields = [
+  'budgetInput',
+  'hostelCost',
+  'foodCost',
+  'transportCost',
+  'booksCost',
+  'otherCost'
+];
+
+budgetFields.forEach(id => {
+
+  const saved = localStorage.getItem('precious-' + id);
+
+  if (saved !== null) {
+    document.getElementById(id).value = saved;
+  }
+
+  document.getElementById(id).addEventListener('input', () => {
+    localStorage.setItem(
+      'precious-' + id,
+      document.getElementById(id).value
+    );
+  });
+
+});
+
+function calculateBudget() {
+
+  const getValue = id =>
+    Number(document.getElementById(id).value) || 0;
+
+  const available = getValue('budgetInput');
+
+  const expenses =
+    getValue('hostelCost') +
+    getValue('foodCost') +
+    getValue('transportCost') +
+    getValue('booksCost') +
+    getValue('otherCost');
+
+  if (available <= 0) {
+    document.getElementById('budgetResult').textContent =
+      'Please enter your available budget.';
+    return;
+  }
+
+  const balance = available - expenses;
+
+  document.getElementById('budgetResult').innerHTML =
+    'Total planned expenses: ₦' +
+    expenses.toLocaleString('en-NG') +
+    '<br>Remaining balance: ₦' +
+    balance.toLocaleString('en-NG') +
+    (balance < 0
+      ? '<br>⚠️ Your expenses exceed your budget.'
+      : '<br>💗 You are within your budget!');
+}
+
+</script>
+
+</body>
+  </html>
+  
